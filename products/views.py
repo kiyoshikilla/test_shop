@@ -12,11 +12,12 @@ def index(request):
 
 def shop(request):
     categories = ProductCategory.objects.all()
-    category_id= request.GET.getlist('category')
+    selected_categories= request.GET.getlist('category')
+
     
-    if category_id:
-        products= Product.objects.filter(category__id__in=category_id)
+    if selected_categories:
+        products= Product.objects.filter(category__id__in=selected_categories)
     else:
         products= Product.objects.all()
 
-    return render(request, 'products/shop.html', {"categories" : categories, "products" : products, 'selected_categories' : category_id,})
+    return render(request, 'products/shop.html', {"categories" : categories, "products" : products, 'selected_categories' : selected_categories,})
