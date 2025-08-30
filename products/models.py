@@ -15,7 +15,8 @@ class Size(models.Model):
     name = models.CharField(max_length= 4, unique = True)
     order = models.PositiveIntegerField(default= 0)
 
-    ordering = ['order']
+    class Meta:
+        ordering = ['order']
     
     def __str__(self):
         return self.name
