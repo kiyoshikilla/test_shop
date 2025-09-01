@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -31,7 +32,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products_images')
     size = models.ForeignKey(Size, on_delete = models.SET_NULL, null= True, blank= True)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
-
+    slug = models.SlugField(max_length=256, blank=True, null=True)
 
     def __str__(self):
         return f'Продукт: {self.name} | Категорія: {self.category.name}'

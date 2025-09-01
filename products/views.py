@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import ProductCategory, Product, Size
+
 # Create your views here.
 
 def index(request):
@@ -26,3 +27,8 @@ def shop(request):
   
 
     return render(request, 'products/shop.html', {"categories" : categories, "products" : products, 'selected_categories' : selected_categories, 'sizes' : size, 'selected_sizes' : selected_sizes,})
+
+
+def detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'products/detail.html', {'product' : product})
