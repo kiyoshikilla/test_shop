@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from products.views import index, detail
+from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,7 +26,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),   
     path('shop/', include('products.urls', namespace='products')),
-    path('details/<int:pk>/', detail, name='detail')
+    path('details/<int:pk>/', detail, name='detail'),
+    path('login/', user_views.login, name='login'),
+    path('register/', user_views.register, name='register')
 ]
 
 

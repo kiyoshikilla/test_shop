@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кабінет</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="container py-5">
+    <div class="row">
+        <!-- Ліва колонка з профілем -->
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h4>Мій профіль</h4>
+                <p><strong>Ім’я:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <a href="{% url 'logout' %}" class="btn btn-danger w-100 mt-3">Вийти</a>
+            </div>
+        </div>
+
+        <!-- Права колонка з замовленнями -->
+        <div class="col-md-8">
+            <div class="card p-3">
+                <h4>Мої замовлення</h4>
+                {% if orders %}
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Дата</th>
+                                <th>Сума</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.created_at|date:"Y-m-d" }}</td>
+                                    <td>{{ order.total }} ₴</td>
+                                    <td>{{ order.status }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="text-muted mt-3">У вас ще немає замовлень.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
