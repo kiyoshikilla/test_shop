@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from users.models import AbstractUser
+from django.shortcuts import render, HttpResponseRedirect
+from django.urls import reverse
 from users.forms import UserLoginForm, UserRegisterForm 
 from django.contrib import auth
 
@@ -14,6 +14,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
+                return HttpResponseRedirect(reverse('index'))
     else:
         form = UserLoginForm()
         
