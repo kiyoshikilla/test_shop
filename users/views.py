@@ -22,5 +22,14 @@ def login(request):
     return render(request, 'users/login.html', context)
 
 def register(request):
-    context = {'form' : UserRegisterForm}
+    if request.method == "POST":
+        form = UserRegisterForm(data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('index'))
+    else: 
+        form = UserRegisterForm()
+        
+    context = {'form' : form}
     return render(request, 'users/register.html', context)
