@@ -11,7 +11,7 @@
 <div class="container py-5 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="card p-4" style="max-width: 400px; width: 100%;">
         <h3 class="text-center mb-4">Вхід</h3>
-        <form action={% url "login" %} method="POST">
+        <form action={% url "users:login" %} method="POST">
             {% csrf_token %}
             {{ form.non_field_errors }}
             <div class="mb-3">
@@ -26,7 +26,7 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">Увійти</button>
             <p class="text-center mt-3">
-                Немає акаунта? <a href="{% url 'register' %}">Зареєструватися</a>
+                Немає акаунта? <a href="{% url 'users:register' %}">Зареєструватися</a>
             </p>
         </form>
     </div>
