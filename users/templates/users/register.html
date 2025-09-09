@@ -7,41 +7,52 @@
     <title>Реєстрація</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-<div class="container py-5 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-    <div class="card p-4" style="max-width: 500px; width: 100%;">
-        <h2 class="auth-title">Реєстрація</h2>
-        <form method="post" class="auth-form">
+<body class="login-page">
+<div class="container">
+    <div class="card login-card">
+        <h3>Реєстрація</h3>
+        <form method="POST">
             {% csrf_token %}
-            {{ form.non_field_errors }}
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="id_first_name" class="form-label">Ім'я</label>
-                    {{ form.first_name }}
-                    {{ form.first_name.errors }}
+
+            {% if form.non_field_errors %}
+                <div class="error-box">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="id_last_name" class="form-label">Прізвище</label>
-                    {{ form.last_name }}
-                    {{ form.last_name.errors }}
-                </div>
-            </div>
+            {% endif %}
+
             <div class="mb-3">
-                <label for="id_email" class="form-label">Email</label>
+                <label for="{{ form.first_name.id_for_label }}" class="form-label">Ім'я</label>
+                {{ form.first_name }}
+                <div class="field-error">{{ form.first_name.errors }}</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.last_name.id_for_label }}" class="form-label">Прізвище</label>
+                {{ form.last_name }}
+                <div class="field-error">{{ form.last_name.errors }}</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
                 {{ form.email }}
-                {{ form.email.errors }}
+                <div class="field-error">{{ form.email.errors }}</div>
             </div>
+
             <div class="mb-3">
-                <label for="id_password1" class="form-label">Пароль</label>
+                <label for="{{ form.password1.id_for_label }}" class="form-label">Пароль</label>
                 {{ form.password1 }}
-                {{ form.password1.errors }}
+                <div class="field-error">{{ form.password1.errors }}</div>
             </div>
+
             <div class="mb-3">
-                <label for="id_password2" class="form-label">Підтвердження пароля</label>
+                <label for="{{ form.password2.id_for_label }}" class="form-label">Підтвердження пароля</label>
                 {{ form.password2 }}
-                {{ form.password2.errors }}
+                <div class="field-error">{{ form.password2.errors }}</div>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Зареєструватися</button>
+
+            <button type="submit" class="btn-primary login-btn w-100">Зареєструватися</button>
             <p class="text-center mt-3">
                 Вже маєте акаунт? <a href="{% url 'users:login' %}">Увійти</a>
             </p>

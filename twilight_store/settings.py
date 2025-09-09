@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'test_shpo.urls'
+ROOT_URLCONF = 'twilight_store.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'test_shpo.wsgi.application'
+WSGI_APPLICATION = 'twilight_store.wsgi.application'
 
 
 # Database
