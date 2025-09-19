@@ -165,8 +165,10 @@ body{
     margin-top: 23px;
 }
 
-label{
+.payment label{
     color:white;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .payment input{
@@ -175,7 +177,8 @@ label{
 
     padding: 0 15px;
     color: #C4C4C4;
-    
+    margin-bottom: 5px;
+
     border: none;
     border-radius: 10px;
     background-color: #6268C6;
