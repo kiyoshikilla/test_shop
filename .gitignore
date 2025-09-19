@@ -15,11 +15,12 @@ __pycache__/
 *.pyc
 db.sqlite3
 media/
-staticfiles/
-/static/
 /products_images/
 /categories_images/
-
+/static/js
+/static/lib
+/static/mail
+/static/scss
 # VSCode
 .vscode/
 .idea/
