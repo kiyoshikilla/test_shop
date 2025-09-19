@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+}
+
+.wrapper{
+    margin: 0 auto;
+    max-width: 1133px;
+    
+}
+
+.main-content{
+    display: flex;
+    align-items: flex-start;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+
+    height: 30px;
+    width: 220px;
+    margin: 50px 0 0 30px;
+    font-weight: 700;
+}
+
+.text-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.stripe{
+   display: flex;
+    background-color: #D0CFCF;
+    width: 608px;
+    height: 1px;
+
+    margin: 23px 55px 24px 45px;
+}
+
+.title {
+    display: flex;
+    flex-wrap: wrap;
+    
+    flex-direction: column;
+    align-items: start;
+    
+    width: 215px;
+}
+
+.main-title {
+    margin: 24px 0px 3px 45px;
+    font-size: 18px;
+}
+
+.sub-title {
+    margin: 0 0 29px 45px;
+    font-size: 14px;
+}
+
+.card-list {
+    list-style-type: none;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    
+}
+
+.card-item {
+    width: 608px;
+    margin-left: 55px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;   
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.product-img {
+    width: 80px;
+    height: 82px;
+}
+
+.product-info {
+    margin-left: 18px
+}
+
+.product-name {
+    font-size: 18px;
+}
+
+.product-size {
+    margin-top: 3px;
+    font-size: 14px;
+}
+
+.product-price {
+    margin-left: 190px;
+}
+
+.delete-btn {
+    margin-left: 38px;  
+    border: none;
+}
+
+.container {
+    width: 388px;
+    height: 644px;
+    
+    display: flex;
+    flex-direction: column;
+    margin-left: 55px;
+    margin-top: -30px;
+
+    border-radius: 25px;
+    background-color: #565ABB;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.high-text {
+    color: #FEFCFC;
+}
+
+.card-container {
+    font-size: 22px;
+    margin: 27px 0 24px 19px;
+}
+
+.type {
+    font-size: 16px;
+    margin: 0 0 14px 19px;
+}
+
+.card-select {
+    display: flex;
+    justify-content: space-around;
+}
+
+.payment {
+    margin: 27px 19px 15px 19px;
+    width: 350px;
+    height: 230px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.stripe-card{
+    background-color: #5F65C3;
+    width: 350px;
+    height: 1px;
+    margin-top: 23px;
+}
+
+.payment label{
+    color:white;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.payment input{
+    width: 350px;
+    height: 40px;
+
+    padding: 0 15px;
+    color: #C4C4C4;
+    margin-bottom: 5px;
+
+    border: none;
+    border-radius: 10px;
+    background-color: #6268C6;
+    
+}
+
+.payment input::placeholder{
+    color: #C4C4C4;
+    font-size: 12px;
+    font-weight: medium;
+}
+
+.exp-cvv {
+    width: 350px;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.expiry {
+    flex-grow: 1;
+}
+
+.cvv {
+    flex-grow: 1;
+}
+
+.expiry label,
+.cvv label{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.expiry input,
+.cvv input{
+    width: 155px;
+    flex-grow: 1;
+}
+
+
+
+.summary {
+    margin: 0 19px 26px 19px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.summary p{
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 14px;
+    color: #FEFCFC;
+}
+
+.checkout-btn {
+    width: 350px;
+    height: 60px;
+
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    align-items: center;
+
+    border: none;
+    border-radius: 12px;
+
+    color: #FEFCFC;
+    font-size: 16px;
+    background-color: #4DE1C1;
+
+    margin: 0 25px;
+}
+
+.checkout-btn span{
+    margin-left: 24px;
+}
+
+.checkout-text{
+    margin-right: 24px;
+    display: flex;
+    align-items: center;
+}
+

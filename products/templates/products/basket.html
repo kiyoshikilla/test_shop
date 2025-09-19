@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/cart.css">
+    <title>Shopping cart - TWILIGHT STORE</title>
+</head>
+<body>
+<div class="wrapper"> 
+    <header>
+    
+        <div class="link">
+            <a href="#" class="text-link">
+                <img src="/static/img/arrow.png" alt="">
+                Shopping Continue
+            </a>
+        </div>
+
+    </header>
+    
+    <div class="main-content">
+        <section>
+
+        <div class="title">
+            <div class="stripe"></div>
+            <h1 class="main-title">Shopping cart</h1>
+            <p class="sub-title">You have 3 item in your cart</p>
+        </div>
+
+        <ul class="card-list">
+            <li class="card-item">
+                <img src="/products_images/product-1.jpg" alt="" class="product-img">
+                <div class="product-info">
+                    <p class="product-name">Bape Hoodie</p>
+                    <p class="product-size">Extra cheese and toping</p>
+                </div>
+                <p class="product-price">$681</p>
+                <button class="delete-btn">
+                  <img src="/static/img/trash_can.png" alt="">
+                </button>
+            </li>
+            <li class="card-item">
+                <img src="/products_images/product-1.jpg" alt="" class="product-img">
+                <div class="product-info">
+                    <p class="product-name">Bape Hoodie</p>
+                    <p class="product-size">Extra cheese and toping</p>
+                </div>
+                <p class="product-price">$681</p>
+                <button class="delete-btn">
+                  <img src="/static/img/trash_can.png" alt="">
+                </button>
+            </li>
+            <li class="card-item">
+                <img src="/products_images/product-1.jpg" alt="" class="product-img">
+                <div class="product-info">
+                    <p class="product-name">Bape Hoodie</p>
+                    <p class="product-size">Extra cheese and toping</p>
+                </div>
+                <p class="product-price">$681</p>
+                <button class="delete-btn">
+                  <img src="/static/img/trash_can.png" alt="">
+                </button>
+            </li>
+        </ul>
+        </section>
+
+
+    <aside class="container">
+
+        <div class="high-text">
+            <h2 class="card-container">Card Details</h2>
+            <p class="type">Card type</p>
+        </div>  
+
+        <div class="card-select">
+            <img src="/static/img/master.png" alt="">
+            <img src="/static/img/visa.png" alt="">
+            <img src="/static/img/rupay.png" alt="">
+        </div>
+
+        <form class="payment">
+    
+            <label for="name-on-card">Name on card</label>
+            <input type="text" id="name-on-card" placeholder="Name">
+
+            <label for="card-number">Card number</label>
+            <input type="text" id="card-number" placeholder="1111 2222 3333 4444">
+
+            
+
+            <div class="exp-cvv">
+                <div class="expiry">
+                    <label for="exp">Expiration date</label>
+                    <input type="text" id="exp" placeholder="mm/yy">
+                </div>
+                <div class="cvv">
+                    <label for="cvv-num">CVV</label>
+                    <input type="text" id="cvv-num" placeholder="123">
+                </div>
+            </div>
+            <div class="stripe-card"></div>
+        </form>
+        <div class="summary">
+            <p><span>Subtotal</span> <span>$1,668</span></p>
+            <p><span>Shipping</span> <span>$4</span></p>
+            <p><span>Total (Tax incl.)</span> <span>$1,672</span></p>
+        </div>
+
+        <button class="checkout-btn">
+            <span>$1,672</span>
+            <div class="checkout-text">
+                <span>Checkout</span>     
+                <img src="/static/img/Right.png" alt="">   
+            </div>
+        </button>
+    </aside>
+</div>
+</div>
+</body>
+</html>
