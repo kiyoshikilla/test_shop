@@ -1,3 +1,8 @@
+{% load static %}
+
+{% if cart %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +16,7 @@
     <header>
     
         <div class="link">
-            <a href="#" class="text-link">
+            <a href="/" class="text-link">
                 <img src="/static/img/arrow.png" alt="">
                 Shopping Continue
             </a>
@@ -25,9 +30,14 @@
         <div class="title">
             <div class="stripe"></div>
             <h1 class="main-title">Shopping cart</h1>
+            {% if cart %}
             <p class="sub-title">You have 3 item in your cart</p>
-        </div>
+            {% else %}
+            <p class="sub-title">You have no items in your cart</p>
+            {% endif %}
+        </div>  
 
+        {% if cart %}
         <ul class="card-list">
             <li class="card-item">
                 <img src="/products_images/product-1.jpg" alt="" class="product-img">
@@ -115,6 +125,7 @@
             </div>
         </button>
     </aside>
+    {% endif %}
 </div>
 </div>
 </body>
