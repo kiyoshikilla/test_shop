@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from .models import ProductCategory, Product, Size
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from .models import ProductCategory, Product, Size, Cart
+from users.models import User
+
 
 # Create your views here.
 
@@ -34,4 +36,19 @@ def detail(request, pk):
     return render(request, 'products/detail.html', {'product' : product})
 
 def cart(request):
-    return render(request, "products/basket.html", {"cart" : cart})
+    carts = Cart.objects.filter(user=request.user)
+    has_items = carts.exists()
+    return render(request, "products/basket.html", {"carts" : carts, "has_items" : has_items})
+
+def cart_add(request, product_id):
+    product = Product.objects.get(id=product_id)
+    carts = Cart.objects.filter(user=request.user, product=product)
+
+    if not carts.exists():
+        Cart.objects.create(user=request.user, product=product, quantity=1)
+    else:
+        carts = carts.first()
+        carts.quantity += 1
+        carts.save()
+    
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
