@@ -1,3 +1,6 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,7 @@
     <header>
     
         <div class="link">
-            <a href="#" class="text-link">
+            <a href="/" class="text-link">
                 <img src="/static/img/arrow.png" alt="">
                 Shopping Continue
             </a>
@@ -25,43 +28,28 @@
         <div class="title">
             <div class="stripe"></div>
             <h1 class="main-title">Shopping cart</h1>
+            {% if carts %}
             <p class="sub-title">You have 3 item in your cart</p>
-        </div>
+            {% else %}
+            <p class="sub-title">You have no items in your cart</p>
+            {% endif %}
+        </div>  
 
+        {% if carts %}
         <ul class="card-list">
+            {% for cart in carts %}
             <li class="card-item">
                 <img src="/products_images/product-1.jpg" alt="" class="product-img">
                 <div class="product-info">
-                    <p class="product-name">Bape Hoodie</p>
-                    <p class="product-size">Extra cheese and toping</p>
+                    <p class="product-name">{{ cart.product.name }}</p>
+                    <p class="product-size">{{ cart.product.description }}</p>
                 </div>
                 <p class="product-price">$681</p>
                 <button class="delete-btn">
                   <img src="/static/img/trash_can.png" alt="">
                 </button>
             </li>
-            <li class="card-item">
-                <img src="/products_images/product-1.jpg" alt="" class="product-img">
-                <div class="product-info">
-                    <p class="product-name">Bape Hoodie</p>
-                    <p class="product-size">Extra cheese and toping</p>
-                </div>
-                <p class="product-price">$681</p>
-                <button class="delete-btn">
-                  <img src="/static/img/trash_can.png" alt="">
-                </button>
-            </li>
-            <li class="card-item">
-                <img src="/products_images/product-1.jpg" alt="" class="product-img">
-                <div class="product-info">
-                    <p class="product-name">Bape Hoodie</p>
-                    <p class="product-size">Extra cheese and toping</p>
-                </div>
-                <p class="product-price">$681</p>
-                <button class="delete-btn">
-                  <img src="/static/img/trash_can.png" alt="">
-                </button>
-            </li>
+            {% endfor %}
         </ul>
         </section>
 
@@ -115,6 +103,7 @@
             </div>
         </button>
     </aside>
+    {% endif %}
 </div>
 </div>
 </body>
