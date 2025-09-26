@@ -27,7 +27,7 @@ urlpatterns = [
     path('', index, name='index'),   
     path('shop/', include('products.urls', namespace='products')),
     path('details/<int:pk>/', detail, name='detail'),
-    path('users/', include('users.urls', namespace='users')) 
+    path('users/', include('users.urls', namespace='users')),
 ]
 
 
