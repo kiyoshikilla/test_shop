@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models import ProductCategory, Product, Size, Cart
 from users.models import User
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -13,22 +14,28 @@ def index(request):
     }
     return render(request, 'products/index.html', context)
 
-def shop(request):
+def shop(request, page_number=1):
+    products = Product.objects.all()
+    
+
     categories = ProductCategory.objects.all()
     size = Size.objects.all()
 
     selected_categories= request.GET.getlist('category')
     selected_sizes= request.GET.getlist('size')
 
-    products = Product.objects.all()
     
     if selected_categories:
         products= products.filter(category__id__in=selected_categories)
     if selected_sizes:
         products= products.filter(size__id__in=selected_sizes)
   
+    per_page = 3
+    paginator = Paginator(products, per_page)
+    products_paginator = paginator.page(page_number)   
 
-    return render(request, 'products/shop.html', {"categories" : categories, "products" : products, 'selected_categories' : selected_categories, 'sizes' : size, 'selected_sizes' : selected_sizes,})
+
+    return render(request, 'products/shop.html', {"categories" : categories, "products" : products_paginator, 'selected_categories' : selected_categories, 'sizes' : size, 'selected_sizes' : selected_sizes,})
 
 
 def detail(request, pk):
