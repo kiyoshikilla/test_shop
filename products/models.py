@@ -9,6 +9,10 @@ class ProductCategory(models.Model):
     value = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='categories_images', blank=True, null=True)
 
+    class Meta:
+        verbose_name = "category"
+        verbose_name_plural = "categories"
+
     def __str__(self):
         return self.name
     
@@ -34,6 +38,10 @@ class Product(models.Model):
     size = models.ForeignKey(Size, on_delete = models.SET_NULL, null= True, blank= True)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=256, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "product"
+        verbose_name_plural = "products"
 
     def __str__(self):
         return f'Продукт: {self.name} | Категорія: {self.category.name}'
