@@ -7,7 +7,9 @@ from products.models import *
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    pass
+    list_display =  ('name', 'price', 'category')
+    fields = ('name', 'price', 'rating', 'image', 'size', 'category')
+    search_fields = ('name',)
 
 @admin.register(ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
@@ -16,3 +18,9 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 @admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):
     pass
+
+class CartAdmin(admin.TabularInline):
+    model = Cart
+    fields = ('product', 'quantity', 'created_timestamp')
+    readonly_fields = ('created_timestamp',)
+    extra = 0   
