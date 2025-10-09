@@ -4,8 +4,7 @@ from django.core.paginator import Paginator
 from .models import ProductCategory, Product, Size, Cart
 from users.models import User
 
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 
 
 
@@ -20,7 +19,6 @@ def index(request):
     return render(request, 'products/index.html', context)
 
 
-@cache_page(60 * 15, key_prefix='shop_list')
 def shop(request, page_number=1):
     products = Product.objects.all()
 
@@ -31,7 +29,20 @@ def shop(request, page_number=1):
     selected_categories= request.GET.getlist('category')
     selected_sizes= request.GET.getlist('size')
 
+    cache_key = f"shop_list_page_{page_number}"   
+
+    if selected_categories:
+        cache_key += f"_cat_{'_'.join(selected_categories)}"
+    if selected_sizes:
+        cache_key += f"_size_{'_'.join(selected_sizes)}"
     
+    context = cache.get(cache_key,)
+
+    if context is None:
+        products = Product.objects.all()
+        categories = ProductCategory.objects.all()
+        size = Size.objects.all()
+
     if selected_categories:
         products= products.filter(category__id__in=selected_categories)
     if selected_sizes:
@@ -41,8 +52,15 @@ def shop(request, page_number=1):
     paginator = Paginator(products, per_page)
     products_paginator = paginator.page(page_number)   
 
+    context = {"categories" : categories,
+                "products" : products_paginator,
+                'selected_categories' : selected_categories,
+                'sizes' : size,
+                'selected_sizes' : selected_sizes,}
 
-    return render(request, 'products/shop.html', {"categories" : categories, "products" : products_paginator, 'selected_categories' : selected_categories, 'sizes' : size, 'selected_sizes' : selected_sizes,})
+    cache.set(cache_key, context, 60 * 15)
+
+    return render(request, 'products/shop.html', context)
 
 
 
