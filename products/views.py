@@ -1,7 +1,12 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.core.paginator import Paginator
+
 from .models import ProductCategory, Product, Size, Cart
 from users.models import User
-from django.core.paginator import Paginator
+
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+
 
 
 # Create your views here.
@@ -14,9 +19,11 @@ def index(request):
     }
     return render(request, 'products/index.html', context)
 
+
+@cache_page(60 * 15, key_prefix='shop_list')
 def shop(request, page_number=1):
     products = Product.objects.all()
-    
+
 
     categories = ProductCategory.objects.all()
     size = Size.objects.all()
@@ -36,6 +43,7 @@ def shop(request, page_number=1):
 
 
     return render(request, 'products/shop.html', {"categories" : categories, "products" : products_paginator, 'selected_categories' : selected_categories, 'sizes' : size, 'selected_sizes' : selected_sizes,})
+
 
 
 def detail(request, pk):
