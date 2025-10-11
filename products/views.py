@@ -20,7 +20,7 @@ def index(request):
 
 
 def shop(request, page_number=1):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('id')
 
 
     categories = ProductCategory.objects.all()
